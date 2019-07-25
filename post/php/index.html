@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>在 Ubuntu/Debian 下安装 PHP7.3 教程 | Gridea</title>
 <meta name="description" content="温故而知新" />
-<link rel="shortcut icon" href="https://liwanmin.github.io/favicon.ico?v=1564071479460">
+<link rel="shortcut icon" href="https://liwanmin.github.io/favicon.ico?v=1564072266002">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://liwanmin.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://liwanmin.github.io">
-  <img class="avatar" src="https://liwanmin.github.io/images/avatar.png?v=1564071479460" alt="">
+  <img class="avatar" src="https://liwanmin.github.io/images/avatar.png?v=1564072266002" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -91,15 +91,33 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p><strong>介绍</strong><br>
-最近的 PHP 7.3.0 已经在 2018 年12月6日 发布 GA，大家已经可以开始第一时间体验新版本了，这里先放出 PHP7.3 安装的教程以便大家升级。<br>
-适用系统： Ubuntu 18.04 LTS / Ubuntu 16.04 LTS ／ Ubuntu 14.04 LTS / Debian 9 stretch / Debian 8 jessie<br>
-<strong>安装 PHP</strong><br>
-Ondřej Surý 的 PHP PPA 为 Ubuntu 18.04/16.04/14.04 提供了 PHP7.2 版本，同时也有为 Debian 9/8 提供 PHP7.2 版本，因此 Ubuntu 是源于 Debian 所以基本可以通用，同时维护难度较低，软件源安装的 PHP 默认以 Unix Socket 的状态运行在 /run/php/php7.3-fpm.sock，比使用 TCP 以 localhost:9000 的方式性能更好。</p>
+                <h1 id="介绍">介绍</h1>
+<p>最近的 PHP 7.3.0 已经在 2018 年12月6日 发布 GA，大家已经可以开始第一时间体验新版本了，这里先放出 PHP7.3 安装的教程以便大家升级。<br>
+适用系统： Ubuntu 18.04 LTS / Ubuntu 16.04 LTS ／ Ubuntu 14.04 LTS / Debian 9 stretch / Debian 8 jessie</p>
+<h1 id="安装php">安装PHP</h1>
+<p>Ondřej Surý 的 PHP PPA 为 Ubuntu 18.04/16.04/14.04 提供了 PHP7.2 版本，同时也有为 Debian 9/8 提供 PHP7.2 版本，因此 Ubuntu 是源于 Debian 所以基本可以通用，同时维护难度较低，软件源安装的 PHP 默认以 Unix Socket 的状态运行在 /run/php/php7.3-fpm.sock，比使用 TCP 以 localhost:9000 的方式性能更好。<br>
+值得一提的是 Ondřej Surý 是 Debian PHP 软件源的官方维护者之一，所以说稳定性和安全性基本上不是问题。<br>
+由于 PHP 7.3 是新出的版本势必有不少的兼容性问题，特别是国产的程序建议等待开发者通知再进行升级，一些 PECL 扩展可能也不会及时适配最新版。建议更新前提前做好备份准备。目前已知的是 WordPress 5.0 版本开始支持 PHP 7.3。</p>
+<h1 id="添加软件源">添加软件源</h1>
+<p><strong>Ubuntu</strong><br>
+<strong>安装软件源拓展工具：</strong></p>
+<pre><code>apt -y install software-properties-common apt-transport-https lsb-release ca-certificates
+</code></pre>
+<p><strong>添加 Ondřej Surý 的 PHP PPA 源，需要按一次回车：</strong></p>
+<pre><code>add-apt-repository ppa:ondrej/php  
+</code></pre>
+<p><strong>更新软件源缓存：</strong></p>
+<pre><code>apt update
+</code></pre>
 
               </div>
               <div class="toc-container">
-                
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85php">安装PHP</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90">添加软件源</a></li>
+</ul>
+
               </div>
             </div>
           </article>
