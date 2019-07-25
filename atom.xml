@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://blog.liwanmin.me</id>
+    <id>http://liwanmin.github.io</id>
     <title>Gridea</title>
-    <updated>2019-07-25T16:10:28.756Z</updated>
+    <updated>2019-07-25T16:11:16.997Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://blog.liwanmin.me"/>
-    <link rel="self" href="http://blog.liwanmin.me/atom.xml"/>
+    <link rel="alternate" href="http://liwanmin.github.io"/>
+    <link rel="self" href="http://liwanmin.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://blog.liwanmin.me/images/avatar.png</logo>
-    <icon>http://blog.liwanmin.me/favicon.ico</icon>
+    <logo>http://liwanmin.github.io/images/avatar.png</logo>
+    <icon>http://liwanmin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[在 Ubuntu/Debian 下安装 PHP7.3 教程]]></title>
-        <id>http://blog.liwanmin.me/post/php</id>
-        <link href="http://blog.liwanmin.me/post/php">
+        <id>http://liwanmin.github.io/post/php</id>
+        <link href="http://liwanmin.github.io/post/php">
         </link>
         <updated>2019-07-25T15:50:05.000Z</updated>
         <content type="html"><![CDATA[<p><strong>介绍</strong><br>
@@ -25,8 +25,8 @@ Ondřej Surý 的 PHP PPA 为 Ubuntu 18.04/16.04/14.04 提供了 PHP7.2 版本�
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>http://blog.liwanmin.me/post/hello-gridea</id>
-        <link href="http://blog.liwanmin.me/post/hello-gridea">
+        <id>http://liwanmin.github.io/post/hello-gridea</id>
+        <link href="http://liwanmin.github.io/post/hello-gridea">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
