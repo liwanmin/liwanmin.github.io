@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Hello Gridea | Gridea</title>
+<title>Mac管理多个ssh key | Gridea</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,45 +92,62 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Hello Gridea</h2>
-            <div class="post-date">2018-12-12</div>
-            
-              <div class="feature-container" style="background-image: url('http://www.liwanmin.me/post-images/hello-gridea.png')">
-              </div>
+            <h2 class="post-title">Mac管理多个ssh key</h2>
+            <div class="post-date">2019-07-26</div>
             
             <div class="post-content">
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="http://hvenotes.fehey.com/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>𝖶𝗂𝗇𝖽𝗈𝗐𝗌</strong> 或 <strong>𝖬𝖺𝖼𝖮𝖲</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+              <p><strong>打开终端，进入到.ssh文件夹内</strong></p>
+<pre><code>cd .ssh
+</code></pre>
+<p><strong>生成ssh-key</strong></p>
+<pre><code>ssh-keygen -t rsa -C &quot;youremailname&quot;
+</code></pre>
+<p>在生成ssh-key时，会让输入一个key名，默认是 id_rsa。需要管理多个key的情况下，建议这个key名是自定义，后面跟着域名的key以方便管理和查看。因此key的名字可以以这种方式命名： id_rsa_hostname<br>
+<strong>设置密码</strong><br>
+这个密码可以设置也可以不设置<br>
+<strong>配置ssh-key</strong><br>
+生成ssh-key的时候在 .ssh文件目录下可以看到刚才以 id_rsa_hostname命名的两个文件 id_rsa_hostname和 id_rsa_hostname.pub。这两个文件一个是私钥一个是公钥<br>
+查看公钥文件</p>
+<pre><code>cat id_rsa_hostname.pub
+</code></pre>
+<p>复制内容粘贴到需要设置的域名中，如：GitHub，在GitHub设置中添加ssh。将内容粘贴到SSH keys里面。</p>
+<h1 id="配置多个ssh-key">配置多个ssh-key</h1>
+<p>在 .ssh文件目录下创建一个config文件,编辑文件：</p>
+<pre><code>  cd .ssh 
+  vim config
+</code></pre>
+<pre><code># github   
+Host github.com   
+HostName github.com   
+# github对应的email或者用户名  
+User Rosalindjuan   
+PreferredAuthentications publickey  
+# github对应的私钥   
+IdentityFile ~/.ssh/id_rsa_github
+</code></pre>
+<p><strong>Key 添加到ssh-agent</strong></p>
+<pre><code>ssh-agent -s
+</code></pre>
+<p>如果看到echo Agent pid xxxxx;那就说明已经启用，然后把私钥添加到ssh-agent</p>
+<pre><code>ssh-add ~/.ssh/id_rsa_hostname
+</code></pre>
+<p><strong>测试</strong></p>
+<pre><code>ssh git@github.com
+</code></pre>
+<p>如果提示： Hi xxx! You've successfully authenticated, but GitHub does not provide shell access.<br>
+那么ssh-key将添加成功</p>
 
             </div>
             
-              <div class="tag-container">
-                
-                  <a href="http://www.liwanmin.me/tag/8z9G6lfw6" class="tag">
-                    Gridea
-                  </a>
-                
-              </div>
             
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://www.liwanmin.me/post/gitlab">
+                  <h3 class="post-title">
+                    在Centos7下搭建gitlab
+                  </h3>
+                </a>
+              </div>
             
 
             

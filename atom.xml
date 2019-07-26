@@ -1,19 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://blog.liwanmin.me</id>
+    <id>http://www.liwanmin.me</id>
     <title>Gridea</title>
-    <updated>2019-07-25T16:39:42.961Z</updated>
+    <updated>2019-07-26T01:38:11.315Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://blog.liwanmin.me"/>
-    <link rel="self" href="http://blog.liwanmin.me/atom.xml"/>
+    <link rel="alternate" href="http://www.liwanmin.me"/>
+    <link rel="self" href="http://www.liwanmin.me/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://blog.liwanmin.me/images/avatar.png</logo>
-    <icon>http://blog.liwanmin.me/favicon.ico</icon>
+    <logo>http://www.liwanmin.me/images/avatar.png</logo>
+    <icon>http://www.liwanmin.me/favicon.ico</icon>
     <rights>All rights reserved 2019, Gridea</rights>
     <entry>
+        <title type="html"><![CDATA[go-get 利用socks5 代理翻墙下载]]></title>
+        <id>http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai</id>
+        <link href="http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai">
+        </link>
+        <updated>2019-07-25T17:01:26.000Z</updated>
+        <content type="html"><![CDATA[<p>想用go get命令去下载<a href="https://github.com/kataras/iris">iris</a>这个框架时发现无法访问，原来golang.org网站以及其它的一些相关的开发网站被墙了。现在基本都是用shadowsocks来翻墙，但是shadowsocks是基于socks5协议的，go get则是使用http协议进行网络访问，即使用了proxychains4命令， go get 依旧不通。因此我们要把socks5代理转为http代理，就可以访问了。</p>
+<h1 id="cow">Cow</h1>
+<p><a href="https://github.com/cyfdecyf/cow">cow</a>根据项目介绍简单的配置，可以在本机启动一个http代理，以shadowsocks为二级代理。<br>
+curl -L git.io/cow | bash 环境变量 COW_INSTALLDIR 可以指定安装的路径，若该环境变量不是目录则询问用户<br>
+在配置文件$HOME/.cow/rc中添加两行配置， 分别是cow的监听和代理</p>
+<pre><code>listen = http://127.0.0.1:7777  #默认已添加
+proxy = socks5://127.0.0.1:1080
+</code></pre>
+<p>然后设置环境变量</p>
+<pre><code>export http_proxy=http://127.0.0.1:7777
+export https_proxy=http://127.0.0.1:7777
+</code></pre>
+<pre><code>source ~/.profile
+查看变量是否生效
+echo $http_proxy
+</code></pre>
+<p>然后开启cow，就可以愉快地去下载了</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mac管理多个ssh key]]></title>
+        <id>http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key</id>
+        <link href="http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key">
+        </link>
+        <updated>2019-07-25T16:57:47.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>打开终端，进入到.ssh文件夹内</strong></p>
+<pre><code>cd .ssh
+</code></pre>
+<p><strong>生成ssh-key</strong></p>
+<pre><code>ssh-keygen -t rsa -C &quot;youremailname&quot;
+</code></pre>
+<p>在生成ssh-key时，会让输入一个key名，默认是 id_rsa。需要管理多个key的情况下，建议这个key名是自定义，后面跟着域名的key以方便管理和查看。因此key的名字可以以这种方式命名： id_rsa_hostname<br>
+<strong>设置密码</strong><br>
+这个密码可以设置也可以不设置<br>
+<strong>配置ssh-key</strong><br>
+生成ssh-key的时候在 .ssh文件目录下可以看到刚才以 id_rsa_hostname命名的两个文件 id_rsa_hostname和 id_rsa_hostname.pub。这两个文件一个是私钥一个是公钥<br>
+查看公钥文件</p>
+<pre><code>cat id_rsa_hostname.pub
+</code></pre>
+<p>复制内容粘贴到需要设置的域名中，如：GitHub，在GitHub设置中添加ssh。将内容粘贴到SSH keys里面。</p>
+<h1 id="配置多个ssh-key">配置多个ssh-key</h1>
+<p>在 .ssh文件目录下创建一个config文件,编辑文件：</p>
+<pre><code>  cd .ssh 
+  vim config
+</code></pre>
+<pre><code># github   
+Host github.com   
+HostName github.com   
+# github对应的email或者用户名  
+User Rosalindjuan   
+PreferredAuthentications publickey  
+# github对应的私钥   
+IdentityFile ~/.ssh/id_rsa_github
+</code></pre>
+<p><strong>Key 添加到ssh-agent</strong></p>
+<pre><code>ssh-agent -s
+</code></pre>
+<p>如果看到echo Agent pid xxxxx;那就说明已经启用，然后把私钥添加到ssh-agent</p>
+<pre><code>ssh-add ~/.ssh/id_rsa_hostname
+</code></pre>
+<p><strong>测试</strong></p>
+<pre><code>ssh git@github.com
+</code></pre>
+<p>如果提示： Hi xxx! You've successfully authenticated, but GitHub does not provide shell access.<br>
+那么ssh-key将添加成功</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[在Centos7下搭建gitlab]]></title>
+        <id>http://www.liwanmin.me/post/gitlab</id>
+        <link href="http://www.liwanmin.me/post/gitlab">
+        </link>
+        <updated>2019-07-25T16:49:01.000Z</updated>
+        <content type="html"><![CDATA[<p>可以按照官网<a href="">https://www.gitlab.com.cn/installation/#ubuntu?version=ce</a>安装社区版<br>
+也可以到清华的镜像上去下载安装<a href="">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/ubuntu/pool/trusty/main/g/gitlab-ce/</a></p>
+<h1 id="安装gitlab">安装gitlab</h1>
+<pre><code>yum install gitlab-ce
+</code></pre>
+<p>执行完后要改一下指向的域名</p>
+<pre><code>vim /etc/gitlab/gitlab.rb
+</code></pre>
+<p>修改文件中</p>
+<pre><code>external_url = 'http://xxx.xxx.xxx'
+</code></pre>
+<p>修改完保存后重启一下配置，执行</p>
+<pre><code>gitlab-ctl reconfigure
+</code></pre>
+<p>执行完后，系统就已经完成了安装并进行了启动<br>
+查看是否安装成功并正常启动</p>
+<pre><code>gitlab-ctl status
+</code></pre>
+<h1 id="获取修改超级管理员root的密码">获取/修改超级管理员root的密码</h1>
+<p>切换目录</p>
+<pre><code>cd /opt/gitlab/bin
+</code></pre>
+<p>执行初始化命令</p>
+<pre><code>gitlab-rails console production 
+</code></pre>
+<p>在irb(main):001:0&gt; 后面执行</p>
+<pre><code>u=User.where(id:1).first
+</code></pre>
+<pre><code>u.password='12345678'
+</code></pre>
+<pre><code>u.password_confirmation='12345678' 
+</code></pre>
+<pre><code> u.save!
+</code></pre>
+<p>回到gitlab ,可以通过 root/12345678 这一超级管理员账号登录了</p>
+<h1 id="安装汉化包">安装汉化包</h1>
+<pre><code>git clone https://gitlab.com/xhang/gitlab.git
+</code></pre>
+<p>停止gitlab</p>
+<pre><code>gitlab-ctl stop
+</code></pre>
+<p>查看改汉化补丁版本</p>
+<pre><code>cat gitlab/VERSION
+</code></pre>
+<p>当前版本：11.9.4</p>
+<pre><code> git diff v11.9.4 v11.9.4-zh &gt;/tmp/11.9.4-zh.diff 
+</code></pre>
+<pre><code>patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 &lt; /tmp/11.9.4-zh.diff 
+</code></pre>
+<p>如果碰到</p>
+<pre><code>File to patch: 
+</code></pre>
+<pre><code>Skip this patch? [y] 
+</code></pre>
+<p>可以按回车一直跳过，然后启动gitlab</p>
+<pre><code>gitlab-ctl start
+</code></pre>
+<pre><code>gitlab-ctl reconfigure
+</code></pre>
+<h1 id="2g内存服务器卡顿问题解决方法">2G内存服务器卡顿问题解决方法</h1>
+<p>通过以下命令查看swap分区情况：</p>
+<pre><code>cat /proc/swaps
+</code></pre>
+<p>如果没有显示分区，执行这个命令创建swap分区</p>
+<pre><code>mkswap /data/swap
+</code></pre>
+<p>查看内核参数vm.swappiness中的数值是否为0，如果为0则根据实际需要调整成60<br>
+查看参数<br>
+<code>cat /proc/sys/vm/swappiness</code><br>
+设置参数：</p>
+<pre><code>sysctl -w vm.swappiness=60
+</code></pre>
+<p>启用 swap 分区</p>
+<pre><code>swapon /data/swap
+
+echo “/data/swap swap swap defaults 0 0” &gt;&gt; /etc/fstab
+</code></pre>
+<p>再次使用cat /proc/swaps 查看swap分区是否启动<br>
+启用成功后， gitlab 进行操作会发现流畅很多！</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[在 Ubuntu/Debian 下安装 PHP7.3 教程]]></title>
-        <id>http://blog.liwanmin.me/post/php</id>
-        <link href="http://blog.liwanmin.me/post/php">
+        <id>http://www.liwanmin.me/post/php</id>
+        <link href="http://www.liwanmin.me/post/php">
         </link>
         <updated>2019-07-25T15:50:05.000Z</updated>
         <content type="html"><![CDATA[<h1 id="介绍">介绍</h1>
@@ -34,12 +194,132 @@
 <p><strong>更新软件源缓存：</strong></p>
 <pre><code>apt update
 </code></pre>
+<p><strong>debian</strong><br>
+<strong>安装软件源拓展工具：</strong></p>
+<pre><code>apt -y install software-properties-common apt-transport-https lsb-release ca-certificates
+</code></pre>
+<p><strong>添加 GPG</strong></p>
+<pre><code>wget -O /etc/apt/trusted.gpg.d/php.gpg https://mirror.xtom.com.hk/sury/php/apt.gpg
+</code></pre>
+<p><strong>添加 sury 软件源</strong></p>
+<pre><code>sh -c 'echo &quot;deb https://mirror.xtom.com.hk/sury/php/ $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/php.list'   
+</code></pre>
+<p><strong>更新软件源缓存：</strong></p>
+<pre><code>apt-get update
+</code></pre>
+<h1 id="安装软件">安装软件</h1>
+<p><strong>安装 PHP7.3：</strong></p>
+<pre><code>apt install php7.3-fpm php7.3-mysql php7.3-curl php7.3-gd php7.3-mbstring php7.3-xml php7.3-xmlrpc php7.3-zip php7.3-opcache -y
+</code></pre>
+<h1 id="设置-php">设置 PHP</h1>
+<p>安装完成后，编辑 /etc/php/7.3/fpm/php.ini 替换换 ;cgi.fix_pathinfo=1 为 cgi.fix_pathinfo=0 快捷命令：</p>
+<pre><code>sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php/7.3/fpm/php.ini 
+</code></pre>
+<h1 id="管理-php">管理 PHP</h1>
+<p>安装好了先重启一下！</p>
+<pre><code>systemctl restart php7.3-fpm
+</code></pre>
+<p><strong>更多操作：</strong></p>
+<pre><code>systemctl restart php7.3-fpm #重启
+systemctl start php7.3-fpm #启动
+systemctl stop php7.3-fpm #关闭
+systemctl status php7.3-fpm #检查状态
+</code></pre>
+<h1 id="查看-php">查看 PHP</h1>
+<p>验证一下是否安装成功：</p>
+<pre><code>root@mf88.biz-service:~# php -v
+PHP 7.3.0-1+ubuntu18.04.1+deb.sury.org+1 (cli) (built: Dec  6 2018 20:24:55) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.3.0-dev, Copyright (c) 1998-2018 Zend Technologies
+with Zend OPcache v7.3.0-1+ubuntu18.04.1+deb.sury.org+1, Copyright (c) 1999-2018, by Zend Technologies
+</code></pre>
+<h1 id="更新-php">更新 PHP</h1>
+<p>运行下面的命令系统就会更新所有可以更新的软件包括 PHP</p>
+<pre><code>apt update
+apt upgrade -y
+</code></pre>
+<h1 id="安装更多组件">安装更多组件</h1>
+<p>上面的一条命令安装 PHP 只是安装了部分 PHP 拓展，更多的软件可见：</p>
+<pre><code>root@mf88.biz-service:~# apt-cache search php7.3
+php-amqp - AMQP extension for PHP
+php-apcu - APC User Cache for PHP
+php-apcu-bc - APCu Backwards Compatibility Module
+php-ds - PHP extension providing efficient data structures for PHP 7
+php-gearman - PHP wrapper to libgearman
+php-geoip - GeoIP module for PHP
+php-gmagick - Provides a wrapper to the GraphicsMagick library
+php-gnupg - PHP wrapper around the gpgme library
+php-http - PECL HTTP module for PHP Extended HTTP Support
+php-igbinary - igbinary PHP serializer
+php-imagick - Provides a wrapper to the ImageMagick library
+php-mailparse - Email message manipulation for PHP
+php-memcache - memcache extension module for PHP
+php-memcached - memcached extension module for PHP, uses libmemcached
+php-mongodb - MongoDB driver for PHP
+php-msgpack - PHP extension for interfacing with MessagePack
+php-oauth - OAuth 1.0 consumer and provider extension
+php-propro - propro module for PHP
+php-radius - radius client library for PHP
+php-raphf - raphf module for PHP
+php-redis - PHP extension for interfacing with Redis
+php-rrd - PHP bindings to rrd tool system
+php-smbclient - PHP wrapper for libsmbclient
+php-solr - PHP extension for communicating with Apache Solr server
+php-ssh2 - Bindings for the libssh2 library
+php-stomp - Streaming Text Oriented Messaging Protocol (STOMP) client module for PHP
+php-tideways - Tideways PHP Profiler Extension
+php-uploadprogress - file upload progress tracking extension for PHP
+php-uuid - PHP UUID extension
+php-yac - YAC (Yet Another Cache) for PHP
+php-yaml - YAML-1.1 parser and emitter for PHP
+php-zmq - ZeroMQ messaging bindings for PHP
+php-xdebug - Xdebug Module for PHP
+php-lua - PHP Embedded lua interpreter
+libapache2-mod-php7.3 - server-side, HTML-embedded scripting language (Apache 2 module)
+libphp7.3-embed - HTML-embedded scripting language (Embedded SAPI library)
+php7.3-bcmath - Bcmath module for PHP
+php7.3-bz2 - bzip2 module for PHP
+php7.3-cgi - server-side, HTML-embedded scripting language (CGI binary)
+php7.3-cli - command-line interpreter for the PHP scripting language
+php7.3-common - documentation, examples and common module for PHP
+php7.3-curl - CURL module for PHP
+php7.3-dba - DBA module for PHP
+php7.3-dev - Files for PHP7.3 module development
+php7.3-enchant - Enchant module for PHP
+php7.3-fpm - server-side, HTML-embedded scripting language (FPM-CGI binary)
+php7.3-gd - GD module for PHP
+php7.3-gmp - GMP module for PHP
+php7.3-imap - IMAP module for PHP
+php7.3-interbase - Interbase module for PHP
+php7.3-intl - Internationalisation module for PHP
+php7.3-json - JSON module for PHP
+php7.3-ldap - LDAP module for PHP
+php7.3-mbstring - MBSTRING module for PHP
+php7.3-mysql - MySQL module for PHP
+php7.3-odbc - ODBC module for PHP
+php7.3-opcache - Zend OpCache module for PHP
+php7.3-pgsql - PostgreSQL module for PHP
+php7.3-phpdbg - server-side, HTML-embedded scripting language (PHPDBG binary)
+php7.3-pspell - pspell module for PHP
+php7.3-readline - readline module for PHP
+php7.3-recode - recode module for PHP
+php7.3-snmp - SNMP module for PHP
+php7.3-soap - SOAP module for PHP
+php7.3-sqlite3 - SQLite3 module for PHP
+php7.3-sybase - Sybase module for PHP
+php7.3-tidy - tidy module for PHP
+php7.3-xml - DOM, SimpleXML, WDDX, XML, and XSL module for PHP
+php7.3-xmlrpc - XMLRPC-EPI module for PHP
+php7.3-zip - Zip module for PHP
+php7.3-xsl - XSL module for PHP (dummy)
+php7.3 - server-side, HTML-embedded scripting language (metapackage)
+</code></pre>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>http://blog.liwanmin.me/post/hello-gridea</id>
-        <link href="http://blog.liwanmin.me/post/hello-gridea">
+        <id>http://www.liwanmin.me/post/hello-gridea</id>
+        <link href="http://www.liwanmin.me/post/hello-gridea">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>

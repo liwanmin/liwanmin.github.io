@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>在Centos7下搭建gitlab | Gridea</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1564105090301">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://www.liwanmin.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://www.liwanmin.me">
+        <img src="http://www.liwanmin.me/images/avatar.png?v=1564105090301" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="http://www.liwanmin.me/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">在Centos7下搭建gitlab</h2>
+            <div class="post-date">2019-07-26</div>
+            
+            <div class="post-content">
+              <p>可以按照官网<a href="">https://www.gitlab.com.cn/installation/#ubuntu?version=ce</a>安装社区版<br>
+也可以到清华的镜像上去下载安装<a href="">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/ubuntu/pool/trusty/main/g/gitlab-ce/</a></p>
+<h1 id="安装gitlab">安装gitlab</h1>
+<pre><code>yum install gitlab-ce
+</code></pre>
+<p>执行完后要改一下指向的域名</p>
+<pre><code>vim /etc/gitlab/gitlab.rb
+</code></pre>
+<p>修改文件中</p>
+<pre><code>external_url = 'http://xxx.xxx.xxx'
+</code></pre>
+<p>修改完保存后重启一下配置，执行</p>
+<pre><code>gitlab-ctl reconfigure
+</code></pre>
+<p>执行完后，系统就已经完成了安装并进行了启动<br>
+查看是否安装成功并正常启动</p>
+<pre><code>gitlab-ctl status
+</code></pre>
+<h1 id="获取修改超级管理员root的密码">获取/修改超级管理员root的密码</h1>
+<p>切换目录</p>
+<pre><code>cd /opt/gitlab/bin
+</code></pre>
+<p>执行初始化命令</p>
+<pre><code>gitlab-rails console production 
+</code></pre>
+<p>在irb(main):001:0&gt; 后面执行</p>
+<pre><code>u=User.where(id:1).first
+</code></pre>
+<pre><code>u.password='12345678'
+</code></pre>
+<pre><code>u.password_confirmation='12345678' 
+</code></pre>
+<pre><code> u.save!
+</code></pre>
+<p>回到gitlab ,可以通过 root/12345678 这一超级管理员账号登录了</p>
+<h1 id="安装汉化包">安装汉化包</h1>
+<pre><code>git clone https://gitlab.com/xhang/gitlab.git
+</code></pre>
+<p>停止gitlab</p>
+<pre><code>gitlab-ctl stop
+</code></pre>
+<p>查看改汉化补丁版本</p>
+<pre><code>cat gitlab/VERSION
+</code></pre>
+<p>当前版本：11.9.4</p>
+<pre><code> git diff v11.9.4 v11.9.4-zh &gt;/tmp/11.9.4-zh.diff 
+</code></pre>
+<pre><code>patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 &lt; /tmp/11.9.4-zh.diff 
+</code></pre>
+<p>如果碰到</p>
+<pre><code>File to patch: 
+</code></pre>
+<pre><code>Skip this patch? [y] 
+</code></pre>
+<p>可以按回车一直跳过，然后启动gitlab</p>
+<pre><code>gitlab-ctl start
+</code></pre>
+<pre><code>gitlab-ctl reconfigure
+</code></pre>
+<h1 id="2g内存服务器卡顿问题解决方法">2G内存服务器卡顿问题解决方法</h1>
+<p>通过以下命令查看swap分区情况：</p>
+<pre><code>cat /proc/swaps
+</code></pre>
+<p>如果没有显示分区，执行这个命令创建swap分区</p>
+<pre><code>mkswap /data/swap
+</code></pre>
+<p>查看内核参数vm.swappiness中的数值是否为0，如果为0则根据实际需要调整成60<br>
+查看参数<br>
+<code>cat /proc/sys/vm/swappiness</code><br>
+设置参数：</p>
+<pre><code>sysctl -w vm.swappiness=60
+</code></pre>
+<p>启用 swap 分区</p>
+<pre><code>swapon /data/swap
+
+echo “/data/swap swap swap defaults 0 0” &gt;&gt; /etc/fstab
+</code></pre>
+<p>再次使用cat /proc/swaps 查看swap分区是否启动<br>
+启用成功后， gitlab 进行操作会发现流畅很多！</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://www.liwanmin.me/post/php">
+                  <h3 class="post-title">
+                    在 Ubuntu/Debian 下安装 PHP7.3 教程
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
