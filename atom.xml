@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://liwanmin.me</id>
+    <id>http://www.liwanmin.me</id>
     <title>liwanmin</title>
-    <updated>2019-07-26T02:37:15.787Z</updated>
+    <updated>2019-07-26T03:27:38.403Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://liwanmin.me"/>
-    <link rel="self" href="http://liwanmin.me/atom.xml"/>
+    <link rel="alternate" href="http://www.liwanmin.me"/>
+    <link rel="self" href="http://www.liwanmin.me/atom.xml"/>
     <subtitle>JUST DO IT.</subtitle>
-    <logo>http://liwanmin.me/images/avatar.png</logo>
-    <icon>http://liwanmin.me/favicon.ico</icon>
+    <logo>http://www.liwanmin.me/images/avatar.png</logo>
+    <icon>http://www.liwanmin.me/favicon.ico</icon>
     <rights>All rights reserved 2019, liwanmin</rights>
     <entry>
         <title type="html"><![CDATA[go-get 利用socks5 代理翻墙下载]]></title>
-        <id>http://liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai</id>
-        <link href="http://liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai">
+        <id>http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai</id>
+        <link href="http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai">
         </link>
         <updated>2019-07-25T17:01:26.000Z</updated>
         <content type="html"><![CDATA[<p>想用go get命令去下载<a href="https://github.com/kataras/iris">iris</a>这个框架时发现无法访问，原来golang.org网站以及其它的一些相关的开发网站被墙了。现在基本都是用shadowsocks来翻墙，但是shadowsocks是基于socks5协议的，go get则是使用http协议进行网络访问，即使用了proxychains4命令， go get 依旧不通。因此我们要把socks5代理转为http代理，就可以访问了。</p>
@@ -37,8 +37,8 @@ echo $http_proxy
     </entry>
     <entry>
         <title type="html"><![CDATA[Mac管理多个ssh key]]></title>
-        <id>http://liwanmin.me/post/mac-guan-li-duo-ge-ssh-key</id>
-        <link href="http://liwanmin.me/post/mac-guan-li-duo-ge-ssh-key">
+        <id>http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key</id>
+        <link href="http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key">
         </link>
         <updated>2019-07-25T16:57:47.000Z</updated>
         <content type="html"><![CDATA[<p><strong>打开终端，进入到.ssh文件夹内</strong></p>
@@ -85,8 +85,8 @@ IdentityFile ~/.ssh/id_rsa_github
     </entry>
     <entry>
         <title type="html"><![CDATA[在Centos7下搭建gitlab]]></title>
-        <id>http://liwanmin.me/post/gitlab</id>
-        <link href="http://liwanmin.me/post/gitlab">
+        <id>http://www.liwanmin.me/post/gitlab</id>
+        <link href="http://www.liwanmin.me/post/gitlab">
         </link>
         <updated>2019-07-25T16:49:01.000Z</updated>
         <content type="html"><![CDATA[<p>可以按照官网<a href="">https://www.gitlab.com.cn/installation/#ubuntu?version=ce</a>安装社区版<br>
@@ -172,8 +172,8 @@ echo “/data/swap swap swap defaults 0 0” &gt;&gt; /etc/fstab
     </entry>
     <entry>
         <title type="html"><![CDATA[在 Ubuntu/Debian 下安装 PHP7.3 教程]]></title>
-        <id>http://liwanmin.me/post/php</id>
-        <link href="http://liwanmin.me/post/php">
+        <id>http://www.liwanmin.me/post/php</id>
+        <link href="http://www.liwanmin.me/post/php">
         </link>
         <updated>2019-07-25T15:50:05.000Z</updated>
         <content type="html"><![CDATA[<h1 id="介绍">介绍</h1>
