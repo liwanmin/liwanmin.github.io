@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://www.liwanmin.me</id>
     <title>李万闽</title>
-    <updated>2019-07-26T04:51:18.673Z</updated>
+    <updated>2019-07-26T06:14:51.005Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://www.liwanmin.me"/>
     <link rel="self" href="http://www.liwanmin.me/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai</id>
         <link href="http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai">
         </link>
-        <updated>2019-06-02T03:15:26.000Z</updated>
+        <updated>2019-05-20T02:15:26.000Z</updated>
         <content type="html"><![CDATA[<p>想用go get命令去下载<a href="https://github.com/kataras/iris">iris</a>这个框架时发现无法访问，原来golang.org网站以及其它的一些相关的开发网站被墙了。现在基本都是用shadowsocks来翻墙，但是shadowsocks是基于socks5协议的，go get则是使用http协议进行网络访问，即使用了proxychains4命令， go get 依旧不通。因此我们要把socks5代理转为http代理，就可以访问了。</p>
 <h1 id="cow">Cow</h1>
 <p><a href="https://github.com/cyfdecyf/cow">cow</a>根据项目介绍简单的配置，可以在本机启动一个http代理，以shadowsocks为二级代理。<br>
@@ -175,7 +175,7 @@ IdentityFile ~/.ssh/id_rsa_github
         <id>http://www.liwanmin.me/post/php</id>
         <link href="http://www.liwanmin.me/post/php">
         </link>
-        <updated>2019-04-05T09:30:15.000Z</updated>
+        <updated>2019-03-26T07:30:15.000Z</updated>
         <content type="html"><![CDATA[<h1 id="介绍">介绍</h1>
 <p>最近的 PHP 7.3.0 已经在 2018 年12月6日 发布 GA，大家已经可以开始第一时间体验新版本了，这里先放出 PHP7.3 安装的教程以便大家升级。<br>
 适用系统： Ubuntu 18.04 LTS / Ubuntu 16.04 LTS ／ Ubuntu 14.04 LTS / Debian 9 stretch / Debian 8 jessie</p>
@@ -322,7 +322,7 @@ php7.3 - server-side, HTML-embedded scripting language (metapackage)
         <link href="http://www.liwanmin.me/post/about">
         </link>
         <updated>2019-01-25T11:09:48.000Z</updated>
-        <content type="html"><![CDATA[<p>这是关于的页面，可以在这里向世界介绍你！</p>
+        <content type="html"><![CDATA[<p>一名94年phper，还在不断学习中，致力于写代码</p>
 ]]></content>
     </entry>
 </feed>

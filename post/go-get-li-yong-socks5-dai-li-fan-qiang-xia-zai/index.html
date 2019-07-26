@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1564116667592">
+<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1564121680249">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="http://www.liwanmin.me/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="http://www.liwanmin.me">
-        <img src="http://www.liwanmin.me/images/avatar.png?v=1564116667592" class="site-logo">
+        <img src="http://www.liwanmin.me/images/avatar.png?v=1564121680249" class="site-logo">
         <h1 class="site-title">李万闽</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -99,7 +99,7 @@
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
             <h2 class="post-title">go-get 利用socks5 代理翻墙下载</h2>
-            <div class="post-date">2019-06-02</div>
+            <div class="post-date">2019-05-20</div>
             
             <div class="post-content">
               <p>想用go get命令去下载<a href="https://github.com/kataras/iris">iris</a>这个框架时发现无法访问，原来golang.org网站以及其它的一些相关的开发网站被墙了。现在基本都是用shadowsocks来翻墙，但是shadowsocks是基于socks5协议的，go get则是使用http协议进行网络访问，即使用了proxychains4命令， go get 依旧不通。因此我们要把socks5代理转为http代理，就可以访问了。</p>
