@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://www.liwanmin.me</id>
     <title>李万闽</title>
-    <updated>2019-07-26T04:39:35.581Z</updated>
+    <updated>2019-07-26T04:51:18.673Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://www.liwanmin.me"/>
     <link rel="self" href="http://www.liwanmin.me/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai</id>
         <link href="http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai">
         </link>
-        <updated>2019-07-25T17:01:26.000Z</updated>
+        <updated>2019-06-02T03:15:26.000Z</updated>
         <content type="html"><![CDATA[<p>想用go get命令去下载<a href="https://github.com/kataras/iris">iris</a>这个框架时发现无法访问，原来golang.org网站以及其它的一些相关的开发网站被墙了。现在基本都是用shadowsocks来翻墙，但是shadowsocks是基于socks5协议的，go get则是使用http协议进行网络访问，即使用了proxychains4命令， go get 依旧不通。因此我们要把socks5代理转为http代理，就可以访问了。</p>
 <h1 id="cow">Cow</h1>
 <p><a href="https://github.com/cyfdecyf/cow">cow</a>根据项目介绍简单的配置，可以在本机启动一个http代理，以shadowsocks为二级代理。<br>
@@ -36,59 +36,11 @@ echo $http_proxy
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Mac管理多个ssh key]]></title>
-        <id>http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key</id>
-        <link href="http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key">
-        </link>
-        <updated>2019-07-25T16:57:47.000Z</updated>
-        <content type="html"><![CDATA[<p><strong>打开终端，进入到.ssh文件夹内</strong></p>
-<pre><code>cd .ssh
-</code></pre>
-<p><strong>生成ssh-key</strong></p>
-<pre><code>ssh-keygen -t rsa -C &quot;youremailname&quot;
-</code></pre>
-<p>在生成ssh-key时，会让输入一个key名，默认是 id_rsa。需要管理多个key的情况下，建议这个key名是自定义，后面跟着域名的key以方便管理和查看。因此key的名字可以以这种方式命名： id_rsa_hostname<br>
-<strong>设置密码</strong><br>
-这个密码可以设置也可以不设置<br>
-<strong>配置ssh-key</strong><br>
-生成ssh-key的时候在 .ssh文件目录下可以看到刚才以 id_rsa_hostname命名的两个文件 id_rsa_hostname和 id_rsa_hostname.pub。这两个文件一个是私钥一个是公钥<br>
-查看公钥文件</p>
-<pre><code>cat id_rsa_hostname.pub
-</code></pre>
-<p>复制内容粘贴到需要设置的域名中，如：GitHub，在GitHub设置中添加ssh。将内容粘贴到SSH keys里面。</p>
-<h1 id="配置多个ssh-key">配置多个ssh-key</h1>
-<p>在 .ssh文件目录下创建一个config文件,编辑文件：</p>
-<pre><code>  cd .ssh 
-  vim config
-</code></pre>
-<pre><code># github   
-Host github.com   
-HostName github.com   
-# github对应的email或者用户名  
-User Rosalindjuan   
-PreferredAuthentications publickey  
-# github对应的私钥   
-IdentityFile ~/.ssh/id_rsa_github
-</code></pre>
-<p><strong>Key 添加到ssh-agent</strong></p>
-<pre><code>ssh-agent -s
-</code></pre>
-<p>如果看到echo Agent pid xxxxx;那就说明已经启用，然后把私钥添加到ssh-agent</p>
-<pre><code>ssh-add ~/.ssh/id_rsa_hostname
-</code></pre>
-<p><strong>测试</strong></p>
-<pre><code>ssh git@github.com
-</code></pre>
-<p>如果提示： Hi xxx! You've successfully authenticated, but GitHub does not provide shell access.<br>
-那么ssh-key将添加成功</p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[在Centos7下搭建gitlab]]></title>
         <id>http://www.liwanmin.me/post/gitlab</id>
         <link href="http://www.liwanmin.me/post/gitlab">
         </link>
-        <updated>2019-07-25T16:49:01.000Z</updated>
+        <updated>2019-04-25T11:45:07.000Z</updated>
         <content type="html"><![CDATA[<p>可以按照官网<a href="">https://www.gitlab.com.cn/installation/#ubuntu?version=ce</a>安装社区版<br>
 也可以到清华的镜像上去下载安装<a href="">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/ubuntu/pool/trusty/main/g/gitlab-ce/</a></p>
 <h1 id="安装gitlab">安装gitlab</h1>
@@ -171,11 +123,59 @@ echo “/data/swap swap swap defaults 0 0” &gt;&gt; /etc/fstab
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Mac管理多个ssh key]]></title>
+        <id>http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key</id>
+        <link href="http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key">
+        </link>
+        <updated>2019-04-12T10:13:50.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>打开终端，进入到.ssh文件夹内</strong></p>
+<pre><code>cd .ssh
+</code></pre>
+<p><strong>生成ssh-key</strong></p>
+<pre><code>ssh-keygen -t rsa -C &quot;youremailname&quot;
+</code></pre>
+<p>在生成ssh-key时，会让输入一个key名，默认是 id_rsa。需要管理多个key的情况下，建议这个key名是自定义，后面跟着域名的key以方便管理和查看。因此key的名字可以以这种方式命名： id_rsa_hostname<br>
+<strong>设置密码</strong><br>
+这个密码可以设置也可以不设置<br>
+<strong>配置ssh-key</strong><br>
+生成ssh-key的时候在 .ssh文件目录下可以看到刚才以 id_rsa_hostname命名的两个文件 id_rsa_hostname和 id_rsa_hostname.pub。这两个文件一个是私钥一个是公钥<br>
+查看公钥文件</p>
+<pre><code>cat id_rsa_hostname.pub
+</code></pre>
+<p>复制内容粘贴到需要设置的域名中，如：GitHub，在GitHub设置中添加ssh。将内容粘贴到SSH keys里面。</p>
+<h1 id="配置多个ssh-key">配置多个ssh-key</h1>
+<p>在 .ssh文件目录下创建一个config文件,编辑文件：</p>
+<pre><code>  cd .ssh 
+  vim config
+</code></pre>
+<pre><code># github   
+Host github.com   
+HostName github.com   
+# github对应的email或者用户名  
+User Rosalindjuan   
+PreferredAuthentications publickey  
+# github对应的私钥   
+IdentityFile ~/.ssh/id_rsa_github
+</code></pre>
+<p><strong>Key 添加到ssh-agent</strong></p>
+<pre><code>ssh-agent -s
+</code></pre>
+<p>如果看到echo Agent pid xxxxx;那就说明已经启用，然后把私钥添加到ssh-agent</p>
+<pre><code>ssh-add ~/.ssh/id_rsa_hostname
+</code></pre>
+<p><strong>测试</strong></p>
+<pre><code>ssh git@github.com
+</code></pre>
+<p>如果提示： Hi xxx! You've successfully authenticated, but GitHub does not provide shell access.<br>
+那么ssh-key将添加成功</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[在 Ubuntu/Debian 下安装 PHP7.3 教程]]></title>
         <id>http://www.liwanmin.me/post/php</id>
         <link href="http://www.liwanmin.me/post/php">
         </link>
-        <updated>2019-07-25T15:50:05.000Z</updated>
+        <updated>2019-04-05T09:30:15.000Z</updated>
         <content type="html"><![CDATA[<h1 id="介绍">介绍</h1>
 <p>最近的 PHP 7.3.0 已经在 2018 年12月6日 发布 GA，大家已经可以开始第一时间体验新版本了，这里先放出 PHP7.3 安装的教程以便大家升级。<br>
 适用系统： Ubuntu 18.04 LTS / Ubuntu 16.04 LTS ／ Ubuntu 14.04 LTS / Debian 9 stretch / Debian 8 jessie</p>
@@ -314,6 +314,15 @@ php7.3-zip - Zip module for PHP
 php7.3-xsl - XSL module for PHP (dummy)
 php7.3 - server-side, HTML-embedded scripting language (metapackage)
 </code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于]]></title>
+        <id>http://www.liwanmin.me/post/about</id>
+        <link href="http://www.liwanmin.me/post/about">
+        </link>
+        <updated>2019-01-25T11:09:48.000Z</updated>
+        <content type="html"><![CDATA[<p>这是关于的页面，可以在这里向世界介绍你！</p>
 ]]></content>
     </entry>
 </feed>

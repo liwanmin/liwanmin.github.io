@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Mac管理多个ssh key | 李万闽</title>
+<title>go | 李万闽</title>
 <meta name="description" content="JUST DO IT.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -97,76 +97,28 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Mac管理多个ssh key</h2>
-            <div class="post-date">2019-04-12</div>
-            
-            <div class="post-content">
-              <p><strong>打开终端，进入到.ssh文件夹内</strong></p>
-<pre><code>cd .ssh
-</code></pre>
-<p><strong>生成ssh-key</strong></p>
-<pre><code>ssh-keygen -t rsa -C &quot;youremailname&quot;
-</code></pre>
-<p>在生成ssh-key时，会让输入一个key名，默认是 id_rsa。需要管理多个key的情况下，建议这个key名是自定义，后面跟着域名的key以方便管理和查看。因此key的名字可以以这种方式命名： id_rsa_hostname<br>
-<strong>设置密码</strong><br>
-这个密码可以设置也可以不设置<br>
-<strong>配置ssh-key</strong><br>
-生成ssh-key的时候在 .ssh文件目录下可以看到刚才以 id_rsa_hostname命名的两个文件 id_rsa_hostname和 id_rsa_hostname.pub。这两个文件一个是私钥一个是公钥<br>
-查看公钥文件</p>
-<pre><code>cat id_rsa_hostname.pub
-</code></pre>
-<p>复制内容粘贴到需要设置的域名中，如：GitHub，在GitHub设置中添加ssh。将内容粘贴到SSH keys里面。</p>
-<h1 id="配置多个ssh-key">配置多个ssh-key</h1>
-<p>在 .ssh文件目录下创建一个config文件,编辑文件：</p>
-<pre><code>  cd .ssh 
-  vim config
-</code></pre>
-<pre><code># github   
-Host github.com   
-HostName github.com   
-# github对应的email或者用户名  
-User Rosalindjuan   
-PreferredAuthentications publickey  
-# github对应的私钥   
-IdentityFile ~/.ssh/id_rsa_github
-</code></pre>
-<p><strong>Key 添加到ssh-agent</strong></p>
-<pre><code>ssh-agent -s
-</code></pre>
-<p>如果看到echo Agent pid xxxxx;那就说明已经启用，然后把私钥添加到ssh-agent</p>
-<pre><code>ssh-add ~/.ssh/id_rsa_hostname
-</code></pre>
-<p><strong>测试</strong></p>
-<pre><code>ssh git@github.com
-</code></pre>
-<p>如果提示： Hi xxx! You've successfully authenticated, but GitHub does not provide shell access.<br>
-那么ssh-key将添加成功</p>
-
-            </div>
-            
-              <div class="tag-container">
-                
-                  <a href="http://www.liwanmin.me/tag/MouEzTtHF" class="tag">
-                    mac
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://www.liwanmin.me/post/php">
-                  <h3 class="post-title">
-                    在 Ubuntu/Debian 下安装 PHP7.3 教程
-                  </h3>
+          <h2 class="current-tag">标签: go</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai">
+                  <h2 class="post-title">go-get 利用socks5 代理翻墙下载</h2>
                 </a>
+                <div class="post-date">
+                  2019-06-02
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
               </div>
-            
+              
+            </article>
+          
 
-            
-
-          </div>
+          <div class="pagination-container">
+  
+  
+</div>
 
         </div>
       </div>
