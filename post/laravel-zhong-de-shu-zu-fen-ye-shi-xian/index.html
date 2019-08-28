@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1566973288906">
+<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1566973616852">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="http://www.liwanmin.me/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="http://www.liwanmin.me">
-        <img src="http://www.liwanmin.me/images/avatar.png?v=1566973288906" class="site-logo">
+        <img src="http://www.liwanmin.me/images/avatar.png?v=1566973616852" class="site-logo">
         <h1 class="site-title">李万闽</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -128,7 +128,7 @@ $searchResults = [
             ];
 
         //获取当前的分页数，就是第6这样的
-        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentPage = LengthAwarePaginator::resolveCurrentPage() - 1;
 
         //实例化collect方法
         $collection = new Collection($searchResults);
@@ -137,7 +137,7 @@ $searchResults = [
         $perPage = 5;
 
         //获取当前需要显示的数据列表
-        $currentPageSearchResults = $collection-&gt;slice(($currentPage - 1) * $perPage, $perPage)-&gt;all();
+        $currentPageSearchResults = $collection-&gt;slice($currentPage  * $perPage, $perPage)-&gt;all();
 
         //创建一个新的分页方法
         $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($collection), $perPage);
