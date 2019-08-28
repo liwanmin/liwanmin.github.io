@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>文章归档 | 李万闽</title>
+<title>laravel中的数组分页实现 | 李万闽</title>
 <meta name="description" content="JUST DO IT.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -105,80 +105,63 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
+          <div class="post-detail">
+            <h2 class="post-title">laravel中的数组分页实现</h2>
+            <div class="post-date">2019-08-28</div>
+            
+            <div class="post-content">
+              <p>假如先用paginate获取某个表中的数据，然后往里面继续增加数据重新封装之后，没有办法用laravel中的paginate分页，所以可以先把数据整理成数组，使用collection集合的slice切片方法来实现分页。</p>
+<pre><code>use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+...
+$searchResults = [
+            'item1',
+            'item2',
+            'item3',
+            'item4',
+            'item5',
+            'item6',
+            'item7',
+            'item8',
+            'item9',
+            'item10'
+            ];
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
+        //获取当前的分页数，就是第6这样的
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
+        //实例化collect方法
+        $collection = new Collection($searchResults);
+
+        //定义一下每页显示多少个数据
+        $perPage = 5;
+
+        //获取当前需要显示的数据列表
+        $currentPageSearchResults = $collection-&gt;slice(($currentPage-1) * $perPage, $perPage)-&gt;all();
+
+        //创建一个新的分页方法
+        $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($collection), $perPage);
+
+        return $paginatedSearchResults;
+    }
+</code></pre>
+
+            </div>
             
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2019</h2>
-              
-                
-                  <article class="post">
-                    <a href="http://www.liwanmin.me/post/laravel-zhong-de-shu-zu-fen-ye-shi-xian">
-                      <h2 class="post-title">
-                        laravel中的数组分页实现
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai">
-                      <h2 class="post-title">
-                        go-get 利用socks5 代理翻墙下载
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://www.liwanmin.me/post/gitlab">
-                      <h2 class="post-title">
-                        在Centos7下搭建gitlab
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key">
-                      <h2 class="post-title">
-                        Mac管理多个ssh key
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://www.liwanmin.me/post/php">
-                      <h2 class="post-title">
-                        在 Ubuntu/Debian 下安装 PHP7.3 教程
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://www.liwanmin.me/post/about">
-                      <h2 class="post-title">
-                        关于
-                      </h2>
-                    </a>
-                  </article>
-                
-              
             
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai">
+                  <h3 class="post-title">
+                    go-get 利用socks5 代理翻墙下载
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
-
-          <div class="pagination-container">
-  
-  
-</div>
 
         </div>
       </div>

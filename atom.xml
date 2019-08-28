@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://www.liwanmin.me</id>
     <title>李万闽</title>
-    <updated>2019-07-26T07:07:05.729Z</updated>
+    <updated>2019-08-28T06:20:37.741Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://www.liwanmin.me"/>
     <link rel="self" href="http://www.liwanmin.me/atom.xml"/>
@@ -10,6 +10,49 @@
     <logo>http://www.liwanmin.me/images/avatar.png</logo>
     <icon>http://www.liwanmin.me/favicon.ico</icon>
     <rights>All rights reserved 2019, 李万闽</rights>
+    <entry>
+        <title type="html"><![CDATA[laravel中的数组分页实现]]></title>
+        <id>http://www.liwanmin.me/post/laravel-zhong-de-shu-zu-fen-ye-shi-xian</id>
+        <link href="http://www.liwanmin.me/post/laravel-zhong-de-shu-zu-fen-ye-shi-xian">
+        </link>
+        <updated>2019-08-28T06:11:56.000Z</updated>
+        <content type="html"><![CDATA[<p>假如先用paginate获取某个表中的数据，然后往里面继续增加数据重新封装之后，没有办法用laravel中的paginate分页，所以可以先把数据整理成数组，使用collection集合的slice切片方法来实现分页。</p>
+<pre><code>use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+...
+$searchResults = [
+            'item1',
+            'item2',
+            'item3',
+            'item4',
+            'item5',
+            'item6',
+            'item7',
+            'item8',
+            'item9',
+            'item10'
+            ];
+
+        //获取当前的分页数，就是第6这样的
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
+        //实例化collect方法
+        $collection = new Collection($searchResults);
+
+        //定义一下每页显示多少个数据
+        $perPage = 5;
+
+        //获取当前需要显示的数据列表
+        $currentPageSearchResults = $collection-&gt;slice(($currentPage-1) * $perPage, $perPage)-&gt;all();
+
+        //创建一个新的分页方法
+        $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($collection), $perPage);
+
+        return $paginatedSearchResults;
+    }
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[go-get 利用socks5 代理翻墙下载]]></title>
         <id>http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai</id>
