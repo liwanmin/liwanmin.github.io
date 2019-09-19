@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://www.liwanmin.me</id>
     <title>李万闽</title>
-    <updated>2019-09-19T07:00:26.247Z</updated>
+    <updated>2019-09-19T07:01:50.176Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://www.liwanmin.me"/>
     <link rel="self" href="http://www.liwanmin.me/atom.xml"/>
@@ -407,7 +407,7 @@ php7.3 - server-side, HTML-embedded scripting language (metapackage)
         <link href="http://www.liwanmin.me/post/about">
         </link>
         <updated>2019-01-25T11:09:48.000Z</updated>
-        <content type="html"><![CDATA[<p>一名94年phper，还在不断学习中，致力于创造优雅的代码！</p>
+        <content type="html"><![CDATA[<p>一名90后phper，还在不断学习中，致力于写出优雅的代码！</p>
 ]]></content>
     </entry>
 </feed>
