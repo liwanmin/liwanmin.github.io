@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://www.liwanmin.me</id>
     <title>李万闽</title>
-    <updated>2019-08-28T06:27:02.239Z</updated>
+    <updated>2019-09-19T07:00:26.247Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://www.liwanmin.me"/>
     <link rel="self" href="http://www.liwanmin.me/atom.xml"/>
@@ -10,6 +10,48 @@
     <logo>http://www.liwanmin.me/images/avatar.png</logo>
     <icon>http://www.liwanmin.me/favicon.ico</icon>
     <rights>All rights reserved 2019, 李万闽</rights>
+    <entry>
+        <title type="html"><![CDATA[ Vue.js 实现时分秒倒计时]]></title>
+        <id>http://www.liwanmin.me/post/vuejs-shi-xian-shi-fen-miao-dao-ji-shi</id>
+        <link href="http://www.liwanmin.me/post/vuejs-shi-xian-shi-fen-miao-dao-ji-shi">
+        </link>
+        <updated>2019-09-19T06:57:46.000Z</updated>
+        <content type="html"><![CDATA[<p>页面结构中的数据来自 Vue 实例的 data 对象。</p>
+<pre><code>&lt;div id=&quot;app&quot;&gt;{{ `${day}天 ${hr}小时 ${min}分钟 ${sec}分钟` }}&lt;/div&gt;
+</code></pre>
+<p>mounted 是 Vue 的生命周期方法，可以理解为在页面加载完毕后执行 countdown 方法。countdown 方法每隔一秒会执行一次，并将计算结果分别赋予变量 day、hr、min、sec，同时改变的还有页面上显示的内容。</p>
+<pre><code>new Vue({
+  el: '#app',
+  data: function () {
+    return {
+      day: 0, hr: 0, min: 0, sec: 0
+    }
+  },
+  mounted: function () {
+    this.countdown()
+  },
+  methods: {
+    countdown: function () {
+      const end = Date.parse(new Date('2017-12-01'))
+      const now = Date.parse(new Date())
+      const msec = end - now
+      let day = parseInt(msec / 1000 / 60 / 60 / 24)
+      let hr = parseInt(msec / 1000 / 60 / 60 % 24)
+      let min = parseInt(msec / 1000 / 60 % 60)
+      let sec = parseInt(msec / 1000 % 60)
+      this.day = day
+      this.hr = hr &gt; 9 ? hr : '0' + hr
+      this.min = min &gt; 9 ? min : '0' + min
+      this.sec = sec &gt; 9 ? sec : '0' + sec
+      setTimeout(() =&gt; {
+        this.countdown()
+      }, 1000)
+    }
+  }
+})
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[laravel中的数组分页实现]]></title>
         <id>http://www.liwanmin.me/post/laravel-zhong-de-shu-zu-fen-ye-shi-xian</id>

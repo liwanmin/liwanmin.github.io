@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>laravel中的数组分页实现 | 李万闽</title>
+<title> Vue.js 实现时分秒倒计时 | 李万闽</title>
 <meta name="description" content="JUST DO IT.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -106,52 +106,51 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">laravel中的数组分页实现</h2>
-            <div class="post-date">2019-08-28</div>
+            <h2 class="post-title"> Vue.js 实现时分秒倒计时</h2>
+            <div class="post-date">2019-09-19</div>
             
             <div class="post-content">
-              <p>假如先用paginate获取某个表中的数据，然后往里面继续增加数据重新封装之后，没有办法用laravel中的paginate分页，所以可以先把数据整理成数组，使用collection集合的slice切片方法来实现分页。</p>
-<pre><code>use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
-...
-$searchResults = [
-            'item1',
-            'item2',
-            'item3',
-            'item4',
-            'item5',
-            'item6',
-            'item7',
-            'item8',
-            'item9',
-            'item10'
-            ];
-
-        //获取当前的分页数，就是第6这样的
-        $currentPage = LengthAwarePaginator::resolveCurrentPage() - 1;
-
-        //实例化collect方法
-        $collection = new Collection($searchResults);
-
-        //定义一下每页显示多少个数据
-        $perPage = 5;
-
-        //获取当前需要显示的数据列表
-        $currentPageSearchResults = $collection-&gt;slice($currentPage  * $perPage, $perPage)-&gt;all();
-
-        //创建一个新的分页方法
-        $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($collection), $perPage);
-
-        return $paginatedSearchResults;
+              <p>页面结构中的数据来自 Vue 实例的 data 对象。</p>
+<pre><code>&lt;div id=&quot;app&quot;&gt;{{ `${day}天 ${hr}小时 ${min}分钟 ${sec}分钟` }}&lt;/div&gt;
+</code></pre>
+<p>mounted 是 Vue 的生命周期方法，可以理解为在页面加载完毕后执行 countdown 方法。countdown 方法每隔一秒会执行一次，并将计算结果分别赋予变量 day、hr、min、sec，同时改变的还有页面上显示的内容。</p>
+<pre><code>new Vue({
+  el: '#app',
+  data: function () {
+    return {
+      day: 0, hr: 0, min: 0, sec: 0
     }
+  },
+  mounted: function () {
+    this.countdown()
+  },
+  methods: {
+    countdown: function () {
+      const end = Date.parse(new Date('2017-12-01'))
+      const now = Date.parse(new Date())
+      const msec = end - now
+      let day = parseInt(msec / 1000 / 60 / 60 / 24)
+      let hr = parseInt(msec / 1000 / 60 / 60 % 24)
+      let min = parseInt(msec / 1000 / 60 % 60)
+      let sec = parseInt(msec / 1000 % 60)
+      this.day = day
+      this.hr = hr &gt; 9 ? hr : '0' + hr
+      this.min = min &gt; 9 ? min : '0' + min
+      this.sec = sec &gt; 9 ? sec : '0' + sec
+      setTimeout(() =&gt; {
+        this.countdown()
+      }, 1000)
+    }
+  }
+})
 </code></pre>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="http://www.liwanmin.me/tag/j-IkO9L0p" class="tag">
-                    laravel
+                  <a href="http://www.liwanmin.me/tag/NRwhTSJ4J" class="tag">
+                    vuejs
                   </a>
                 
               </div>
@@ -159,9 +158,9 @@ $searchResults = [
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="http://www.liwanmin.me/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai">
+                <a href="http://www.liwanmin.me/post/laravel-zhong-de-shu-zu-fen-ye-shi-xian">
                   <h3 class="post-title">
-                    go-get 利用socks5 代理翻墙下载
+                    laravel中的数组分页实现
                   </h3>
                 </a>
               </div>
