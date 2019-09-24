@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1569309005510">
+<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1569309111040">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="http://www.liwanmin.me/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="http://www.liwanmin.me">
-        <img src="http://www.liwanmin.me/images/avatar.png?v=1569309005510" class="site-logo">
+        <img src="http://www.liwanmin.me/images/avatar.png?v=1569309111040" class="site-logo">
         <h1 class="site-title">李万闽</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -111,7 +111,8 @@
             
             <div class="post-content">
               <p>页面结构中的数据来自 Vue 实例的 data 对象。</p>
-<div id="app">{{ day }}天 {{ hr }}小时 {{ min }}分钟 {{ sec }}分钟</div>
+<pre><code>&lt;div id=&quot;app&quot;&gt; day 天  hr 小时  min 分钟 sec 分钟&lt;/div&gt;
+</code></pre>
 <p>mounted 是 Vue 的生命周期方法，可以理解为在页面加载完毕后执行 countdown 方法。countdown 方法每隔一秒会执行一次，并将计算结果分别赋予变量 day、hr、min、sec，同时改变的还有页面上显示的内容。</p>
 <pre><code>new Vue({
   el: '#app',
