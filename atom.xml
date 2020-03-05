@@ -2,14 +2,47 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://www.liwanmin.me</id>
     <title>李万闽</title>
-    <updated>2019-09-24T07:12:06.663Z</updated>
+    <updated>2020-03-05T06:52:52.679Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://www.liwanmin.me"/>
     <link rel="self" href="http://www.liwanmin.me/atom.xml"/>
     <subtitle>JUST DO IT.</subtitle>
     <logo>http://www.liwanmin.me/images/avatar.png</logo>
     <icon>http://www.liwanmin.me/favicon.ico</icon>
-    <rights>All rights reserved 2019, 李万闽</rights>
+    <rights>All rights reserved 2020, 李万闽</rights>
+    <entry>
+        <title type="html"><![CDATA[在mac上使用minikube安装k8s单节点集群]]></title>
+        <id>http://www.liwanmin.me/post/zai-mac-shang-shi-yong-minikube-an-zhuang-k8s-dan-jie-dian-ji-qun</id>
+        <link href="http://www.liwanmin.me/post/zai-mac-shang-shi-yong-minikube-an-zhuang-k8s-dan-jie-dian-ji-qun">
+        </link>
+        <updated>2019-12-05T06:51:40.000Z</updated>
+        <content type="html"><![CDATA[<p>最近一直在研究<a href="https://hyperf.io/">hyperf</a>这个微服务框架，在群里看到一位大佬写的hypef<a href="https://github.com/ideal/kubernetes-demo">Kubernetes-demo</a>，怀着好奇学习的心情去了解一下，并尝试一下在mac上部署玩一下，上网查阅了一下关于mac本地部署k8s的资料，决定使用minikube。</p>
+<h1 id="什么是minikube">什么是minikube</h1>
+<p>Minikube是由Kubernetes社区维护的单机版的Kubernetes集群，支持macOS, Linux, and Windows等多种操作系统平台，支持Kubernetes的大部分功能，从基础的容器编排管理，到高级特性如负载均衡、Ingress，权限控制等。非常适合作为Kubernetes入门，或开发测试环境使用。</p>
+<h1 id="安装">安装</h1>
+<p>在这安装过程中踩了许多坑，mac环境可以直接用</p>
+<pre><code>brew install minikube
+minikube start
+</code></pre>
+<p>在启动过程中，终端出现报错信息</p>
+<pre><code>unable to cache ISO: connection failed because connected host has failed to respond.
+</code></pre>
+<p>原因：由于无法从外网下载Minikube ISO出现如上报错。<br>
+所以决定用阿里云提供镜像地址来获取所需要的镜像</p>
+<pre><code> curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v1.2.0/minikube-darwin-amd64 &amp;&amp; chmod +x minikube &amp;&amp; sudo mv minikube /usr/local/bin/
+</code></pre>
+<p>Minikube实际是跑在本地的虚拟机中的，所以，需要先一套Hypervisor。macOS环境下 Hypervisor有VirtualBox, VMware Fusion, HyperKit这三驱动种，mac上已经安装了docker环境，使用HyperKit来启动，但是发现启动consul集群会有问题，找不到集群leader，后续就去下载了VirtualBox，Minikube默认是用VirtualBox来启动。<br>
+启动命令：</p>
+<pre><code>minikube start --docker-env HTTP_PROXY=http://192.168.0.103:1087 --docker-env HTTPS_PROXY=http://192.168.0.103:1087 --docker-env NO_PROXY=127.0.0.1/24 --insecure-registry=192.168.0.103:5000
+</code></pre>
+<h1 id="网络代理">网络代理</h1>
+<p>在没有科学上网的情况下，Minikube有时候不能pull images，可以通过设置代理来解决,科学上网工具可以推荐使用Shadowsocks工具,1087端口是指你Shadowsocks代理监听端口，代理监听地址要改成0.0.0.0，192.168.0.103是你本地的ip地址，--insecure-registries=192.168.0.103:5000来设置虚拟机里面的docker daemon的private registry。</p>
+<p>然后你就可以按照Kubernetes-demo里教程去部署微服务，接下来打算研究一下go-micro这个微服务框架</p>
+<p>官方教程<br>
+<a href="https://kubernetes.io/zh/docs/setup/learning-environment/minikube/">https://kubernetes.io/zh/docs/setup/learning-environment/minikube/</a><br>
+<a href="https://minikube.sigs.k8s.io/docs/">https://minikube.sigs.k8s.io/docs/</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ Vue.js 实现时分秒倒计时]]></title>
         <id>http://www.liwanmin.me/post/vuejs-shi-xian-shi-fen-miao-dao-ji-shi</id>
