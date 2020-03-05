@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://www.liwanmin.me</id>
     <title>李万闽</title>
-    <updated>2020-03-05T06:56:11.535Z</updated>
+    <updated>2020-03-05T06:56:54.161Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://www.liwanmin.me"/>
     <link rel="self" href="http://www.liwanmin.me/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, 李万闽</rights>
     <entry>
         <title type="html"><![CDATA[在mac上使用minikube安装k8s单节点集群]]></title>
-        <id>http://www.liwanmin.me/post/zai-mac-shang-shi-yong-minikube-an-zhuang-k8s-dan-jie-dian-ji-qun</id>
-        <link href="http://www.liwanmin.me/post/zai-mac-shang-shi-yong-minikube-an-zhuang-k8s-dan-jie-dian-ji-qun">
+        <id>http://www.liwanmin.me/post/minikube</id>
+        <link href="http://www.liwanmin.me/post/minikube">
         </link>
         <updated>2019-12-05T06:51:40.000Z</updated>
         <content type="html"><![CDATA[<p>最近一直在研究<a href="https://hyperf.io/">hyperf</a>这个微服务框架，在群里看到一位大佬写的hypef<a href="https://github.com/ideal/kubernetes-demo">Kubernetes-demo</a>，怀着好奇学习的心情去了解一下，并尝试一下在mac上部署玩一下，上网查阅了一下关于mac本地部署k8s的资料，决定使用minikube。</p>
