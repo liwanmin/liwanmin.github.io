@@ -1,18 +1,15 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>mac | 李万闽</title>
 <meta name="description" content="JUST DO IT.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1583402972080">
+<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1583403749026">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="http://www.liwanmin.me/styles/main.css">
 
@@ -21,166 +18,140 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 
 
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://www.liwanmin.me">
-        <img class="avatar" src="http://www.liwanmin.me/images/avatar.png?v=1583402972080" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://www.liwanmin.me">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://www.liwanmin.me">
+        <img src="http://www.liwanmin.me/images/avatar.png?v=1583403749026" class="site-logo">
         <h1 class="site-title">李万闽</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
         
-          <a class="menu purple-link" href="http://git.liwanmin.cn" class="menu" target="_blank">
+          <a href="http://git.liwanmin.cn" class="site-nav" target="_blank">
             代码
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> mac
-          </h2> 
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-<section class="post-item">
-    <div class="content">
-      <a href="http://www.liwanmin.me/post/minikube">
-        <h2 class="post-title">在mac上使用minikube安装k8s单节点集群</h2>
-      </a>
-      <div class="post-abstract">
+          <a class="social-link" href="https://github.com/liwanmin" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
         
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-12-05</span>
+      
         
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="http://www.liwanmin.me/tag/T6GpWnGra">
-                k8s
-                
-                  ，
-                
-              </a>
-            
-              <a href="http://www.liwanmin.me/tag/MouEzTtHF">
-                mac
-                
-              </a>
-            
-          </span>
+      
         
-      </div>
+          <a class="social-link" href="https://weibo.com/u/2384753292" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+      
+        
+      
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key">
-        <h2 class="post-title">Mac管理多个ssh key</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-04-12</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="http://www.liwanmin.me/tag/MouEzTtHF">
-                mac
-                
-              </a>
-            
-          </span>
-        
-      </div>
+    <div class="site-description">
+      JUST DO IT.
     </div>
-    
-  </section>
-
-
-<div class="pagination-container">
-  
-  
-</div>
-
-
-      </div>
-
-      <div class="site-footer">
-  <div class="slogan">JUST DO IT.</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+    <div class="site-footer">
+      Copyright © 2019 Liwanmin | <a class="rss" href="http://www.liwanmin.me/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  Copyright © 2019 Liwanmin | <a class="rss" href="http://www.liwanmin.me/atom.xml" target="_blank">RSS</a>
 </div>
 
 
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <h2 class="current-tag">标签: mac</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://www.liwanmin.me/post/minikube/">
+                  <h2 class="post-title">在mac上使用minikube安装k8s单节点集群</h2>
+                </a>
+                <div class="post-date">
+                  2019-12-05
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://www.liwanmin.me/post/mac-guan-li-duo-ge-ssh-key/">
+                  <h2 class="post-title">Mac管理多个ssh key</h2>
+                </a>
+                <div class="post-date">
+                  2019-04-12
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+
+          <div class="pagination-container">
+  
+  
+</div>
+
+        </div>
+      </div>
     </div>
-    <script type="application/javascript">
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
 
 hljs.initHighlightingOnLoad()
 
