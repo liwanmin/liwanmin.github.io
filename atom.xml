@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://www.liwanmin.me</id>
     <title>李万闽</title>
-    <updated>2020-03-06T01:32:51.676Z</updated>
+    <updated>2020-03-06T02:41:45.869Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://www.liwanmin.me"/>
     <link rel="self" href="http://www.liwanmin.me/atom.xml"/>
@@ -37,6 +37,9 @@ minikube start
 </code></pre>
 <h1 id="网络代理">网络代理</h1>
 <p>在没有科学上网的情况下，Minikube有时候不能pull images，可以通过设置代理来解决,科学上网工具可以推荐使用Shadowsocks工具,1087端口是指你Shadowsocks代理监听端口，代理监听地址要改成0.0.0.0，192.168.0.103是你本地的ip地址，--insecure-registries=192.168.0.103:5000来设置虚拟机里面的docker daemon的private registry。</p>
+<p>打开Kubernetes控制台</p>
+<pre><code>minikube dashboard
+</code></pre>
 <p>然后你就可以按照Kubernetes-demo里教程去部署微服务，接下来打算研究一下go-micro这个微服务框架</p>
 <p>官方教程<br>
 <a href="https://kubernetes.io/zh/docs/setup/learning-environment/minikube/">https://kubernetes.io/zh/docs/setup/learning-environment/minikube/</a><br>

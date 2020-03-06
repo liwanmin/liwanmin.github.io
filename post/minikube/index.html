@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1583458352014">
+<link rel="shortcut icon" href="http://www.liwanmin.me/favicon.ico?v=1583462503308">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="http://www.liwanmin.me/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="http://www.liwanmin.me">
-        <img src="http://www.liwanmin.me/images/avatar.png?v=1583458352014" class="site-logo">
+        <img src="http://www.liwanmin.me/images/avatar.png?v=1583462503308" class="site-logo">
         <h1 class="site-title">李万闽</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -131,6 +131,9 @@ minikube start
 </code></pre>
 <h1 id="网络代理">网络代理</h1>
 <p>在没有科学上网的情况下，Minikube有时候不能pull images，可以通过设置代理来解决,科学上网工具可以推荐使用Shadowsocks工具,1087端口是指你Shadowsocks代理监听端口，代理监听地址要改成0.0.0.0，192.168.0.103是你本地的ip地址，--insecure-registries=192.168.0.103:5000来设置虚拟机里面的docker daemon的private registry。</p>
+<p>打开Kubernetes控制台</p>
+<pre><code>minikube dashboard
+</code></pre>
 <p>然后你就可以按照Kubernetes-demo里教程去部署微服务，接下来打算研究一下go-micro这个微服务框架</p>
 <p>官方教程<br>
 <a href="https://kubernetes.io/zh/docs/setup/learning-environment/minikube/">https://kubernetes.io/zh/docs/setup/learning-environment/minikube/</a><br>
