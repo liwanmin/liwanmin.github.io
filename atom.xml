@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://liwanmin.cn</id>
+    <id>http://git.liwanmin.cn</id>
     <title>李万闽</title>
-    <updated>2020-06-18T03:13:18.734Z</updated>
+    <updated>2020-06-28T14:21:07.516Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://liwanmin.cn"/>
-    <link rel="self" href="http://liwanmin.cn/atom.xml"/>
+    <link rel="alternate" href="http://git.liwanmin.cn"/>
+    <link rel="self" href="http://git.liwanmin.cn/atom.xml"/>
     <subtitle>JUST DO IT.</subtitle>
-    <logo>http://liwanmin.cn/images/avatar.png</logo>
-    <icon>http://liwanmin.cn/favicon.ico</icon>
+    <logo>http://git.liwanmin.cn/images/avatar.png</logo>
+    <icon>http://git.liwanmin.cn/favicon.ico</icon>
     <rights>All rights reserved 2020, 李万闽</rights>
     <entry>
         <title type="html"><![CDATA[在mac上使用minikube安装k8s单节点集群]]></title>
-        <id>http://liwanmin.cn/post/minikube/</id>
-        <link href="http://liwanmin.cn/post/minikube/">
+        <id>http://git.liwanmin.cn/post/minikube/</id>
+        <link href="http://git.liwanmin.cn/post/minikube/">
         </link>
         <updated>2019-12-05T06:51:40.000Z</updated>
         <content type="html"><![CDATA[<p>最近一直在研究<a href="https://hyperf.io/">hyperf</a>这个微服务框架，在群里看到一位大佬写的hypef<a href="https://github.com/ideal/kubernetes-demo">Kubernetes-demo</a>，怀着好奇学习的心情去了解一下，并尝试一下在mac上部署玩一下，上网查阅了一下关于mac本地部署k8s的资料，决定使用minikube。</p>
@@ -48,8 +48,8 @@ minikube start
     </entry>
     <entry>
         <title type="html"><![CDATA[ Vue.js 实现时分秒倒计时]]></title>
-        <id>http://liwanmin.cn/post/vuejs-shi-xian-shi-fen-miao-dao-ji-shi/</id>
-        <link href="http://liwanmin.cn/post/vuejs-shi-xian-shi-fen-miao-dao-ji-shi/">
+        <id>http://git.liwanmin.cn/post/vuejs-shi-xian-shi-fen-miao-dao-ji-shi/</id>
+        <link href="http://git.liwanmin.cn/post/vuejs-shi-xian-shi-fen-miao-dao-ji-shi/">
         </link>
         <updated>2019-09-19T06:57:46.000Z</updated>
         <content type="html"><![CDATA[<p>页面结构中的数据来自 Vue 实例的 data 对象。</p>
@@ -90,8 +90,8 @@ minikube start
     </entry>
     <entry>
         <title type="html"><![CDATA[laravel中的数组分页实现]]></title>
-        <id>http://liwanmin.cn/post/laravel-zhong-de-shu-zu-fen-ye-shi-xian/</id>
-        <link href="http://liwanmin.cn/post/laravel-zhong-de-shu-zu-fen-ye-shi-xian/">
+        <id>http://git.liwanmin.cn/post/laravel-zhong-de-shu-zu-fen-ye-shi-xian/</id>
+        <link href="http://git.liwanmin.cn/post/laravel-zhong-de-shu-zu-fen-ye-shi-xian/">
         </link>
         <updated>2019-08-28T06:11:56.000Z</updated>
         <content type="html"><![CDATA[<p>假如先用paginate获取某个表中的数据，然后往里面继续增加数据重新封装之后，没有办法用laravel中的paginate分页，所以可以先把数据整理成数组，使用collection集合的slice切片方法来实现分页。</p>
@@ -133,8 +133,8 @@ $searchResults = [
     </entry>
     <entry>
         <title type="html"><![CDATA[go-get 利用socks5 代理翻墙下载]]></title>
-        <id>http://liwanmin.cn/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai/</id>
-        <link href="http://liwanmin.cn/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai/">
+        <id>http://git.liwanmin.cn/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai/</id>
+        <link href="http://git.liwanmin.cn/post/go-get-li-yong-socks5-dai-li-fan-qiang-xia-zai/">
         </link>
         <updated>2019-05-20T02:15:26.000Z</updated>
         <content type="html"><![CDATA[<p>想用go get命令去下载<a href="https://github.com/kataras/iris">iris</a>这个框架时发现无法访问，原来golang.org网站以及其它的一些相关的开发网站被墙了。现在基本都是用shadowsocks来翻墙，但是shadowsocks是基于socks5协议的，go get则是使用http协议进行网络访问，即使用了proxychains4命令， go get 依旧不通。因此我们要把socks5代理转为http代理，就可以访问了。</p>
@@ -158,8 +158,8 @@ echo $http_proxy
     </entry>
     <entry>
         <title type="html"><![CDATA[在Centos7下搭建gitlab]]></title>
-        <id>http://liwanmin.cn/post/gitlab/</id>
-        <link href="http://liwanmin.cn/post/gitlab/">
+        <id>http://git.liwanmin.cn/post/gitlab/</id>
+        <link href="http://git.liwanmin.cn/post/gitlab/">
         </link>
         <updated>2019-04-25T11:45:07.000Z</updated>
         <content type="html"><![CDATA[<p>可以按照官网<a href="">https://www.gitlab.com.cn/installation/#ubuntu?version=ce</a>安装社区版<br>
@@ -245,8 +245,8 @@ echo “/data/swap swap swap defaults 0 0” &gt;&gt; /etc/fstab
     </entry>
     <entry>
         <title type="html"><![CDATA[Mac管理多个ssh key]]></title>
-        <id>http://liwanmin.cn/post/mac-guan-li-duo-ge-ssh-key/</id>
-        <link href="http://liwanmin.cn/post/mac-guan-li-duo-ge-ssh-key/">
+        <id>http://git.liwanmin.cn/post/mac-guan-li-duo-ge-ssh-key/</id>
+        <link href="http://git.liwanmin.cn/post/mac-guan-li-duo-ge-ssh-key/">
         </link>
         <updated>2019-04-12T10:13:50.000Z</updated>
         <content type="html"><![CDATA[<p><strong>打开终端，进入到.ssh文件夹内</strong></p>
@@ -293,8 +293,8 @@ IdentityFile ~/.ssh/id_rsa_github
     </entry>
     <entry>
         <title type="html"><![CDATA[在 Ubuntu/Debian 下安装 PHP7.3 教程]]></title>
-        <id>http://liwanmin.cn/post/php/</id>
-        <link href="http://liwanmin.cn/post/php/">
+        <id>http://git.liwanmin.cn/post/php/</id>
+        <link href="http://git.liwanmin.cn/post/php/">
         </link>
         <updated>2019-03-26T07:30:15.000Z</updated>
         <content type="html"><![CDATA[<h1 id="介绍">介绍</h1>
@@ -439,8 +439,8 @@ php7.3 - server-side, HTML-embedded scripting language (metapackage)
     </entry>
     <entry>
         <title type="html"><![CDATA[关于]]></title>
-        <id>http://liwanmin.cn/post/about/</id>
-        <link href="http://liwanmin.cn/post/about/">
+        <id>http://git.liwanmin.cn/post/about/</id>
+        <link href="http://git.liwanmin.cn/post/about/">
         </link>
         <updated>2019-01-25T11:09:48.000Z</updated>
         <content type="html"><![CDATA[<p>一名90后phper，还在不断学习中，致力于写出优雅的代码！</p>
